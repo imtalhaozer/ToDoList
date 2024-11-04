@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
+      <PackageReference Include="MediatR" Version="12.3.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Features\Categories\Constants\" />
+      <Folder Include="Features\Todos\Constants\" />
+      <Folder Include="Features\Todos\Rules\" />
+      <Folder Include="Features\Users\Constants\" />
+      <Folder Include="Features\Users\Rules\" />
+      <Folder Include="Tests\Categories\Commands\" />
+      <Folder Include="Tests\Categories\Queries\" />
+      <Folder Include="Tests\Todos\Commands\" />
+      <Folder Include="Tests\Todos\Queries\" />
+      <Folder Include="Tests\Users\Commands\" />
+      <Folder Include="Tests\Users\Queries\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Core\Core.csproj" />
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+</Project>

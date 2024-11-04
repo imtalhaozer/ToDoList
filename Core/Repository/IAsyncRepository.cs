@@ -1,0 +1,41 @@
+using System.Linq.Expressions;
+using Core.Models;
+using Core.Paging;
+using Microsoft.EntityFrameworkCore.Query;
+
+namespace Core.Repository;
+
+public interface IAsyncRepository<TEntity,TId> : IQuery<TEntity> 
+    where TEntity : Entity<TId>
+{
+    Task<TEntity?> GetAsync(
+        Expression<Func<TEntity, bool>> filter, 
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity,object>>? include = null,
+        bool withDeleted = false,
+        bool enableTracking = true,
+        CancellationToken cancellationToken = default
+        );
+
+    Task<Paginate<TEntity>> GetListAsync(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int index = 0,
+        int size = 10,
+        bool withDeleted = false,
+        bool enableTracking = true,
+        CancellationToken cancellationToken = default
+    );
+
+    Task<TEntity> AddAsync(TEntity entity);
+    
+    Task<ICollection<TEntity>> AddRangeAsync(ICollection<TEntity> entities);
+    
+    Task<TEntity> UpdateAsync(TEntity entity);
+
+    Task<ICollection<TEntity>> UpdateRangeAsync(ICollection<TEntity> entities);
+
+    Task<TEntity> DeleteAsync(TEntity entity, bool permanent = false);
+
+    Task<ICollection<TEntity>> DeleteRangeAsync(ICollection<TEntity> entities, bool permanent = false);
+}
