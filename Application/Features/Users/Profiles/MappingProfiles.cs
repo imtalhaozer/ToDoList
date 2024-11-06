@@ -15,7 +15,6 @@ public class MappingProfiles:Profile
     public MappingProfiles()
     {
         CreateMap<User, CreateUserCommand>().ReverseMap();
-        CreateMap<User, CreatedUserResponse>().ReverseMap();
 
         CreateMap<User, UpdateUserCommand>().ReverseMap();
         CreateMap<User, UpdatedUserResponse>().ReverseMap();
@@ -24,7 +23,6 @@ public class MappingProfiles:Profile
         CreateMap<User, DeletedUserResponse>().ReverseMap();
 
         CreateMap<User, GetListUserListItemDto>().ReverseMap();
-        CreateMap<User, GetByIdUserResponse>().ReverseMap();
         CreateMap<Paginate<User>, GetListResponse<GetListUserListItemDto>>().ReverseMap();
     }
 }

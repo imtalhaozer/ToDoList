@@ -20,6 +20,12 @@ public class CreateTodoCommand:IRequest<CreatedTodoResponse>
     {
         private readonly ITodoRepository _todoRepository;
         private readonly IMapper _mapper;
+
+        public CreateTodoCommandHandler(ITodoRepository todoRepository, IMapper mapper)
+        {
+            _todoRepository = todoRepository;
+            _mapper = mapper;
+        }
         public async Task<CreatedTodoResponse> Handle(CreateTodoCommand request, CancellationToken cancellationToken)
         {
             Todo todo = _mapper.Map<Todo>(request);

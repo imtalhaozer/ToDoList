@@ -15,10 +15,10 @@ public class GetListUserQuery : IRequest<List<GetListUserListItemDto>>
 
 public class GetListUserQueryHandler : IRequestHandler<GetListUserQuery, List<GetListUserListItemDto>>
 {
-    private readonly UserManager<IdentityUser> _userManager; 
+    private readonly UserManager<User> _userManager; 
     private readonly IMapper _mapper;
 
-    public GetListUserQueryHandler(UserManager<IdentityUser> userManager, IMapper mapper)
+    public GetListUserQueryHandler(UserManager<User> userManager, IMapper mapper)
     {
         _userManager = userManager;
         _mapper = mapper;

@@ -6,6 +6,8 @@ public class CreateCategoryCommandValidator:AbstractValidator<CreateCategoryComm
 {
     public CreateCategoryCommandValidator()
     {
-        RuleFor(c=>c.Name).NotEmpty().WithMessage("Name cannot be empty");
+        RuleFor(x => x.Name)
+            .NotEmpty().WithMessage("Kategori adý gerekli")
+            .Length(3, 20).WithMessage("Kategori adý 3 ile 20 karakter arasýnda olmalý");
     }
 }

@@ -20,12 +20,6 @@
       <Folder Include="Features\Todos\Rules\" />
       <Folder Include="Features\Users\Constants\" />
       <Folder Include="Features\Users\Rules\" />
-      <Folder Include="Tests\Categories\Commands\" />
-      <Folder Include="Tests\Categories\Queries\" />
-      <Folder Include="Tests\Todos\Commands\" />
-      <Folder Include="Tests\Todos\Queries\" />
-      <Folder Include="Tests\Users\Commands\" />
-      <Folder Include="Tests\Users\Queries\" />
     </ItemGroup>
 
     <ItemGroup>

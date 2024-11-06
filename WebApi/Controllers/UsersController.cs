@@ -18,7 +18,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateUserCommand createUserCommand)
         {
-            CreatedUserResponse response = await Mediator.Send(createUserCommand);
+            var response = await Mediator.Send(createUserCommand);
             return Ok(response);
         }
 
@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         public async Task<IActionResult> GetById([FromRoute] string id)
         {
             GetByIdUserQuery getByIdUserQuery = new() { UserId = id };
-            GetByIdUserResponse response = await Mediator.Send(getByIdUserQuery);
+            var response = await Mediator.Send(getByIdUserQuery);
             return Ok(response);
         }
 
@@ -49,10 +49,10 @@ namespace WebApi.Controllers
         
         [Authorize(Roles = "User,Admin")]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] string id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var query = new GetByIdUserQuery { UserId = id };
-            GetByIdUserResponse response = await Mediator.Send(query);
+            var deleteUserCommand = new DeleteUserCommand { Id = id };
+            var response = await Mediator.Send(deleteUserCommand);
             return Ok(response);
         }
     }

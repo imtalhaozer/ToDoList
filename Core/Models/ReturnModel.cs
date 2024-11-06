@@ -16,4 +16,9 @@ public class ReturnModel<T>
         Message = message;
         StatusCode = statusCode;
     }
+
+    public ReturnModel()
+    {
+        
+    }
 }
